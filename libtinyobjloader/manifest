@@ -1,0 +1,22 @@
+: 1
+name: libtinyobjloader
+version: 2.0.0-b.10
+project: tinyobjloader
+type: lib,binless
+language: c++
+summary: Tiny but powerful single file wavefront obj loader written in C++03
+license: MIT
+
+description-file: README.md
+
+url: https://github.com/tinyobjloader/tinyobjloader
+src-url: https://github.com/tinyobjloader/tinyobjloader
+doc-url: https://github.com/tinyobjloader/tinyobjloader
+email: syoyo@lighttransport.com
+
+package-description-file: PACKAGE-README.md
+package-url: https://github.com/build2-packaging/tinyobjloader/
+package-email: packaging@build2.org
+
+depends: * build2 >= 0.16.0
+depends: * bpkg >= 0.16.0

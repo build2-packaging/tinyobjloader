@@ -1,0 +1,8 @@
+: test
+{
+  ln -s $src_root/models/ ../models;
+  ln -s $src_base/assets/ assets;
+  ln -s $src_base/issue-177.obj issue-177.obj;
+  ln -s $src_base/issue-177.mtl issue-177.mtl;
+  $* >log.txt == 0
+}

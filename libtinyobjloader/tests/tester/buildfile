@@ -1,0 +1,2 @@
+./: exe{tester}: {hxx cxx}{**} ../hxx{tiny_obj_loader} $tinyobjloader testscript
+./: file{**.mtl **.obj}

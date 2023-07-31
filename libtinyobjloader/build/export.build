@@ -1,0 +1,6 @@
+$out_root/
+{
+  include tinyobjloader/
+}
+
+export $out_root/tinyobjloader/$import.target
