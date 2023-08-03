@@ -1,8 +1,14 @@
 : test
 {
+  # The standard output is ignored because
+  # only successful tests are shown.
+  # Error output must be ignored
+  # as one of the tests doesn't fail
+  # but still outputs an error message.
+  #
   ln -s $src_root/models/ ../models;
   ln -s $src_base/assets/ assets;
   ln -s $src_base/issue-177.obj issue-177.obj;
   ln -s $src_base/issue-177.mtl issue-177.mtl;
-  $* >log.txt == 0
+  $* >- 2>- == 0
 }
