@@ -29,7 +29,7 @@ Make sure to add the stable section of the `cppget.org` repository to your proje
 
     :
     role: prerequisite
-    location: https://pkg.cppget.org/1/stable
+    location: https://pkg.cppget.org/1/beta
     # trust: ...
 
 If the stable section of `cppget.org` is not an option then add this Git repository itself instead as a prerequisite.
@@ -40,7 +40,7 @@ If the stable section of `cppget.org` is not an option then add this Git reposit
 
 Add the respective dependency in your project's `manifest` file to make the package available for import.
 
-    depends: libtinyobjloader ^ 3.0.2
+    depends: libtinyobjloader ^ 2.0.0-
 
 The library can be imported by the following declaration in a `buildfile`.
 
@@ -50,7 +50,9 @@ The library can be imported by the following declaration in a `buildfile`.
 There are no configuration options vailable.
 
 ## Issues and Notes
-Currently, there are no issues.
+- The shared library is not built or exported.
+- Test fuzzers are not compiled and run by the package's build system.
+- Exampels are not compiled and run by the package's build system.
 
 ## Contributing
 Thanks in advance for your help and contribution to keep this package up-to-date.
