@@ -1,0 +1,8 @@
+: 1
+name: libtinyobjloader
+version: 2.0.0-b.10
+type: lib,binless
+language: c++
+project: tinyobjloader
+summary: Tiny but powerful single file wavefront obj loader written in C++03
+license: MIT
