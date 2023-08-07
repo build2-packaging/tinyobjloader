@@ -4,9 +4,9 @@
 
 <p align="center">
     This project builds and defines the build2 package for <a href="https://github.com/tinyobjloader/tinyobjloader">tinyobjloader</a>.
-    Tiny but powerful single file wavefront obj loader written in C++03. No dependency except for C++ STL. It can parse over 10M polygons with moderate memory and time.
-
-    `tinyobjloader` is good for embedding .obj loader to your (global illumination) renderer ;-)
+    Tiny but powerful single file wavefront obj loader written in C++03.
+    No dependency except for C++ STL.
+    It can parse over 10M polygons with moderate memory and time.
 </p>
 
 <p align="center">
@@ -32,7 +32,7 @@ Make sure to add the stable section of the `cppget.org` repository to your proje
     location: https://pkg.cppget.org/1/beta
     # trust: ...
 
-If the stable section of `cppget.org` is not an option then add this Git repository itself instead as a prerequisite.
+If the beta section of `cppget.org` is not an option then add this Git repository itself instead as a prerequisite.
 
     :
     role: prerequisite
@@ -47,12 +47,15 @@ The library can be imported by the following declaration in a `buildfile`.
     import tinyobjloader = libtinyobjloader%lib{tinyobjloader}
 
 ## Configuration
-There are no configuration options vailable.
+There are no configuration options available.
 
 ## Issues and Notes
-- The shared library is not built or exported.
-- Test fuzzers are not compiled and run by the package's build system.
-- Exampels are not compiled and run by the package's build system.
+- The precompiled library provided by the original build system is not accessible through this package. While a precompiled version would naively enhance the ease of use for the package consumers, the following reasons speak against it. First, the implementation of the header-only library is configurable and, as a result, we would either need to offer a precompiled library for each possible configuration or add as many configuration variables to the build system. The latter approach drastically complicates the reasoning about `buildfile`s and also the package's consumption in extern `manifest` files. Furthermore, it would only allow for one single implementation configuration for each package that consumes the library. The former approach doesn't suffer from these properties and, as a matter of fact, is totally preferable. However, the process of defining library targets for each possible configuration is neither scalable (already trying to find an intuitive naming scheme may be impossible) nor testable. Second, `tinyobjloader` is only tested and documented as single-header-only library and users will probably rely on the header-only variant anyway.
+- For now, examples are not compiled and run by the package's build system as they depend on GLFW and, as a consequence, would restrict our capabilities for testing certain target configurations on the CI server. This might be resolvable as soon as the restriction of test packages does not influence the restriction of their library package when running tests on the CI server.
+- Currently, robust triangulation via Mapbox's Earcut is not supported. We need to find a way to handle this kind of in-place dependency that still might be resolved by the system or the user itself.
+- The optimized loader is not supported by this package as it is still ranked experimental and no further tests are provided for it. Also, for Unix-based systems, it depends on `pthread`. Probably the package consumer would need to add this dependency by him-/herself.
+- Test fuzzers are not compiled and run.
+- The library does not seem to support Emscripten.
 
 ## Contributing
 Thanks in advance for your help and contribution to keep this package up-to-date.
